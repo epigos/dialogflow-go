@@ -9,7 +9,7 @@ Create a Client instance, providing your access token and the project ID you wan
   import (
     "fmt"
     "os"
-    dialogflow "github.com/epigos/go-dialogflow"
+    dialogflow "github.com/epigos/dialogflow-go"
   )
 
   func main() {

@@ -1,8 +1,8 @@
 # Go client for Dialogflow v2 API
 
-[![Godoc](http://godoc.org/github.com/epigos/go-dialogflow?status.svg)](http://godoc.org/github.com/epigos/go-dialogflow)
-[![Build Status](https://travis-ci.org/epigos/go-dialogflow.svg?branch=master)](https://travis-ci.org/epigos/go-dialogflow)
-[![Go Report Card](https://goreportcard.com/badge/github.com/epigos/go-dialogflow)](https://goreportcard.com/report/github.com/epigos/go-dialogflow)
+[![Godoc](http://godoc.org/github.com/epigos/dialogflow-go?status.svg)](http://godoc.org/github.com/epigos/dialogflow-go)
+[![Build Status](https://travis-ci.org/epigos/dialogflow-go.svg?branch=master)](https://travis-ci.org/epigos/dialogflow-go)
+[![Go Report Card](https://goreportcard.com/badge/github.com/epigos/dialogflow-go)](https://goreportcard.com/report/github.com/epigos/dialogflow-go)
 
 This package allows integrating your Golang application with [Dialogflow v2](https://dialogflow.com/docs/)
 
@@ -10,7 +10,7 @@ This package allows integrating your Golang application with [Dialogflow v2](htt
 
 Standard go get:
 
-    go get github.com/epigos/go-dialogflow
+    go get github.com/epigos/dialogflow-go
 
 ## Resource coverage
 
@@ -32,7 +32,7 @@ Create a Client instance, providing your access token and the project ID you wan
   import (
     "fmt"
     "os"
-    dialogflow "github.com/epigos/go-dialogflow"
+    dialogflow "github.com/epigos/dialogflow-go"
   )
 
   func main() {
@@ -55,7 +55,7 @@ Create a Client instance, providing your access token and the project ID you wan
 
 ## Documentation
 
-- For full usage and examples see the [Godoc](http://godoc.org/github.com/epigos/go-dialogflow)
+- For full usage and examples see the [Godoc](http://godoc.org/github.com/epigos/dialogflow-go)
 - [Dialogflow v2 API reference](https://cloud.google.com/dialogflow-enterprise/docs/reference/rest/v2-overview)
 
 ## Author
