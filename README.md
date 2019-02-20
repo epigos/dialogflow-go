@@ -53,6 +53,10 @@ Create a Client instance, providing your access token and the project ID you wan
   }
 ```
 
+## Unit tests
+
+    go test -race -v
+
 ## Documentation
 
 - For full usage and examples see the [Godoc](http://godoc.org/github.com/epigos/dialogflow-go)
