@@ -40,7 +40,7 @@ type errorResp struct {
 type httpParams struct {
 	method   string
 	resource string
-	body     interface{}
+	body     []byte
 }
 
 // Operation represents the result of a network API call to dialogflow
@@ -57,7 +57,7 @@ func NewClient(token, projectID string) *Client {
 		Timeout: time.Second * 10,
 	}
 
-	apiURL := fmt.Sprintf("%s/%s/projects/%s", APIBase, DefaultVersion, projectID)
+	apiURL := fmt.Sprintf("%s/%s/projects/%s/agent", APIBase, DefaultVersion, projectID)
 
 	return &Client{
 		accessToken: token,
@@ -110,7 +110,7 @@ func (c *Client) request(method, resource string, body io.Reader) (io.ReadCloser
 		decoder := json.NewDecoder(resp.Body)
 		err = decoder.Decode(&e)
 		if err != nil {
-			return nil, errors.New("Internal Error")
+			return nil, err
 		}
 
 		return nil, errors.New(e.Error.Message)
@@ -120,22 +120,19 @@ func (c *Client) request(method, resource string, body io.Reader) (io.ReadCloser
 }
 
 func (c *Client) processRequest(p *httpParams, dst interface{}) error {
-	body, err := json.Marshal(p.body)
-	if err != nil {
-		return err
-	}
-	reader := bytes.NewReader(body)
+	reader := bytes.NewReader(p.body)
+
 	resp, err := c.request(p.method, p.resource, reader)
-
 	if err != nil {
 		return err
 	}
 
-	decoder := json.NewDecoder(resp)
-	if err = decoder.Decode(dst); err != nil {
-		return err
+	if dst != nil {
+		decoder := json.NewDecoder(resp)
+		if err = decoder.Decode(dst); err != nil {
+			return err
+		}
 	}
-
 	return nil
 }
 
@@ -147,18 +144,26 @@ func (c *Client) get(resource string, dst interface{}) error {
 }
 
 func (c *Client) post(resource string, body interface{}, dst interface{}) error {
+	data, err := json.Marshal(body)
+	if err != nil {
+		return err
+	}
 	return c.processRequest(&httpParams{
 		method:   http.MethodPost,
 		resource: resource,
-		body:     body,
+		body:     data,
 	}, dst)
 }
 
 func (c *Client) put(resource string, body interface{}, dst interface{}) error {
+	data, err := json.Marshal(body)
+	if err != nil {
+		return err
+	}
 	return c.processRequest(&httpParams{
 		method:   http.MethodPut,
 		resource: resource,
-		body:     body,
+		body:     data,
 	}, dst)
 }
 

@@ -21,6 +21,6 @@ func (a *Agent) String() string {
 // GetAgent Retrieves the specified agent
 func (c *Client) GetAgent() (*Agent, error) {
 	var agent Agent
-	err := c.get("/agent", &agent)
+	err := c.get("", &agent)
 	return &agent, err
 }
