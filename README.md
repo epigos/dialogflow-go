@@ -62,6 +62,14 @@ Create a Client instance, providing your access token and the project ID you wan
 - For full usage and examples see the [Godoc](http://godoc.org/github.com/epigos/dialogflow-go)
 - [Dialogflow v2 API reference](https://cloud.google.com/dialogflow-enterprise/docs/reference/rest/v2-overview)
 
+## Todo
+
+- Add `Entities` resource
+- Add `Intents` resource
+- Add `Sessions` resource
+- Add `SessionContexts` resource
+- Add `SessionEntityTypes` resource
+
 ## Author
 
 Philip Adzanoukpe [@epigos](https://twitter.com/@epigos)
